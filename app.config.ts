@@ -29,7 +29,7 @@ const config = {
   environmentUrl,
   app: {
     name: isDebug ? `${BASE_APP_NAME} (debug)` : BASE_APP_NAME,
-    version: '0.0.2',
+    version: '0.0.3',
     description: isDebug
       ? 'DEBUG build: unoptimized with readable code for troubleshooting'
       : 'Finds Java processes running JDK versions affected by Java4Shell',
