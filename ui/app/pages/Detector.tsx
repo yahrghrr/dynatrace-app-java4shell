@@ -194,7 +194,8 @@ export const Detector = () => {
   const totalProcesses = totalRaw != null ? Number(totalRaw) : s.javaTotal;
   const notImpacted = Math.max(totalProcesses - s.impacted, 0);
 
-  const isLoading = javaQuery.isLoading || totalQuery.isLoading;
+  // isFetching covers the first load and every Rescan; isLoading is only true for the first load.
+  const isLoading = javaQuery.isFetching || totalQuery.isFetching;
   const error = javaQuery.error ?? totalQuery.error;
   const scanned = !isLoading && !error && !!javaQuery.data;
   const underAttack = s.impacted > 0;
@@ -211,19 +212,26 @@ export const Detector = () => {
         header: "Status",
         accessor: "status",
         width: 190,
-        cell: ({ value }) => <StatusBadge status={value as Status} />,
+        cell: ({ value }) => (
+          <DataTable.DefaultCell>
+            <StatusBadge status={value as Status} />
+          </DataTable.DefaultCell>
+        ),
       },
       {
         id: "mitigation",
         header: "Mitigation",
         accessor: "mitigation_flag",
         width: 150,
-        cell: ({ value }) =>
-          value ? (
-            <span style={{ color: AMBER, fontWeight: 700 }}>🛡 Flag set</span>
-          ) : (
-            <span style={{ color: RED, fontWeight: 700 }}>✕ None</span>
-          ),
+        cell: ({ value }) => (
+          <DataTable.DefaultCell>
+            {value ? (
+              <span style={{ color: AMBER, fontWeight: 700 }}>🛡 Flag set</span>
+            ) : (
+              <span style={{ color: RED, fontWeight: 700 }}>✕ None</span>
+            )}
+          </DataTable.DefaultCell>
+        ),
       },
       { id: "host", header: "Host", accessor: "host" },
       { id: "arch", header: "Arch", accessor: (r) => r["host.arch"], width: 100 },
@@ -236,7 +244,9 @@ export const Detector = () => {
         accessor: (r) => r["java.version"],
         width: 130,
         cell: ({ value, rowData }) => (
-          <code style={{ color: STATUS_META[rowData.status]?.color, fontWeight: 700 }}>{String(value ?? "")}</code>
+          <DataTable.DefaultCell>
+            <code style={{ color: STATUS_META[rowData.status]?.color, fontWeight: 700 }}>{String(value ?? "")}</code>
+          </DataTable.DefaultCell>
         ),
       },
     ],
@@ -244,8 +254,9 @@ export const Detector = () => {
   );
 
   const rescan = () => {
-    void javaQuery.refetch();
-    void totalQuery.refetch();
+    // forceRefetch bypasses the hook's 60 s cache, so Rescan always queries Grail again.
+    void javaQuery.forceRefetch();
+    void totalQuery.forceRefetch();
   };
 
   return (
@@ -416,7 +427,14 @@ export const Detector = () => {
         )}
 
         <div style={{ borderRadius: 12, border: `1px solid ${RED}44`, overflow: "hidden" }}>
-          <DataTable data={tableRows} columns={columns} loading={isLoading} sortable fullWidth>
+          <DataTable
+            data={tableRows}
+            columns={columns}
+            loading={isLoading}
+            sortable
+            fullWidth
+            variant={{ verticalAlignment: "center" }}
+          >
             <DataTable.Pagination defaultPageSize={25} pageSizeOptions={[10, 25, 50, 100]} />
             <DataTable.EmptyState>
               {scanned ? "🎉 No impacted Java processes found." : "Waiting for scan results…"}
