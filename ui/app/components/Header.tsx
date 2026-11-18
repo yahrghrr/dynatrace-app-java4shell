@@ -6,10 +6,7 @@ export const Header = () => {
   return (
     <AppHeader>
       <AppHeader.Navigation>
-        <AppHeader.Logo as={Link} to="/" />
-        <AppHeader.NavigationItem as={Link} to="/data">
-          Explore Data
-        </AppHeader.NavigationItem>
+        <AppHeader.Logo as={Link} to="/" appName="Java4Shell Detector" />
       </AppHeader.Navigation>
     </AppHeader>
   );

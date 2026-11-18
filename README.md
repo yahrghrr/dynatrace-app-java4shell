@@ -24,8 +24,8 @@ One `app.config.ts` produces two separate Dynatrace apps, chosen with `--payload
 
 | Variant | App ID | Command |
 |---|---|---|
-| Production | `my.dynatrace.app` | `npm run deploy:prod` |
-| Debug | `my.dynatrace.app.debug` | `npm run deploy:debug` |
+| Production | `my.java4shell.detector` | `npm run deploy:prod` |
+| Debug | `my.java4shell.detector.debug` | `npm run deploy:debug` |
 
 `npm run deploy:all` deploys debug first, then production. `npm run uninstall:prod` and `npm run uninstall:debug` remove each variant.
 `npm run package:prod` and `npm run package:debug` build a deployable `.zip` in `out/` without installing it.

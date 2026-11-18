@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Java4Shell Vulnerability Detector">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a0508"/>
+      <stop offset="1" stop-color="#0b0204"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff4d5e"/>
+      <stop offset="0.55" stop-color="#d9112b"/>
+      <stop offset="1" stop-color="#7a0614"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ffd2d7"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <!-- radar rings -->
+  <g fill="none" stroke="#ff3347" stroke-opacity="0.18" stroke-width="2">
+    <circle cx="128" cy="132" r="104"/>
+    <circle cx="128" cy="132" r="84"/>
+  </g>
+
+  <!-- shield -->
+  <path filter="url(#glow)" fill="url(#shield)"
+        d="M128 28 L204 56 V122 C204 172 172 208 128 226 C84 208 52 172 52 122 V56 Z"/>
+  <path fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="3"
+        d="M128 40 L193 64 V122 C193 165 166 196 128 213 C90 196 63 165 63 122 V64 Z"/>
+
+  <!-- steam -->
+  <g fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round">
+    <path d="M108 74 c-8 10 8 16 0 26"/>
+    <path d="M128 66 c-8 12 8 18 0 30"/>
+    <path d="M148 74 c-8 10 8 16 0 26"/>
+  </g>
+
+  <!-- cup -->
+  <path fill="url(#cup)" d="M84 112 H160 V146 C160 166 146 180 122 180 C98 180 84 166 84 146 Z"/>
+  <path fill="none" stroke="url(#cup)" stroke-width="9" d="M160 122 h8 a14 14 0 0 1 0 28 h-10"/>
+  <rect x="78" y="186" width="90" height="8" rx="4" fill="#ffd2d7"/>
+
+  <!-- crack through the cup -->
+  <path fill="none" stroke="#b00c22" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"
+        d="M120 112 L112 132 L126 138 L114 162 L122 180"/>
+</svg>
