@@ -1,5 +1,5 @@
 {
-  "name": "dynatrace-app",
+  "name": "dynatrace-app-java4shell",
   "version": "0.0.0",
   "description": "A starting project with routing, fetching data, and charting",
   "scripts": {

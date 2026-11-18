@@ -51,11 +51,11 @@ The full query lives in [`ui/app/queries.ts`](ui/app/queries.ts):
 ### 1. Download the code
 
 ```bash
-git clone https://github.com/yahrghrr/dynatrace-app.git
+git clone https://github.com/yahrghrr/dynatrace-app-java4shell.git
 ```
 
 ```bash
-cd dynatrace-app
+cd dynatrace-app-java4shell
 ```
 
 ```bash
