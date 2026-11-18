@@ -1,5 +1,7 @@
 # Java4Shell Detector
 
+Author: **Sam JD**
+
 A Dynatrace app that scans every Java process in your environment for JDK versions affected by
 **Java4Shell**. For each affected process, it checks whether a mitigation flag is set on its command line.
 
@@ -163,3 +165,7 @@ docs/screenshots/         README screenshots (sample data)
 
 - [Dynatrace Developer](https://developer.dynatrace.com/): App Toolkit, Strato design system and SDKs
 - [DQL reference](https://docs.dynatrace.com/docs/platform/grail/dynatrace-query-language)
+
+## Author
+
+Created and maintained by **Sam JD**.
